@@ -31,7 +31,7 @@ func (g *Game) init() {
   g.currPlayer = 1
   g.turn = 0
   g.players = make([]Player, 2)
-  g.players[0] = &Human{0}
+  g.players[0] = &Bot{0}
   g.players[1] = &Bot{1}
 }
 
@@ -71,7 +71,7 @@ func (g *Game) nextTurn() {
 
   if g.checkWinCondition(g.currPlayer) {
     print(g.board)
-    fmt.Println(PLAYER[g.currPlayer],"has won the game!")
+    fmt.Println(PLAYER[g.currPlayer], "has won the game!")
     return
   }
 
@@ -89,6 +89,8 @@ func (g *Game) nextTurn() {
 }
 
 func (g *Game) checkWinCondition(currPlayer int) bool {
+  //return g.checkWinConditionGo(currPlayer)
+  //---------------------------------
   for i := range g.board.fields {
     p := Point{}
     p.fromIndex(i)
@@ -140,4 +142,3 @@ func (g *Game) checkWinDirection(p Point, direction, depth, currPlayer int) bool
   }
   return false
 }
-

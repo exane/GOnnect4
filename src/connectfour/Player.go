@@ -64,8 +64,6 @@ func (b *Bot) minimaxAlgorithm(field []string, depth int, maximizing bool, alpha
       continue
     }
 
-    /*p := Point{}
-    p.fromIndex(i)*/
     game.setField(i)
 
     score[i] = b.minimaxAlgorithm(board.fields, depth + 1, !maximizing, alpha, beta)
